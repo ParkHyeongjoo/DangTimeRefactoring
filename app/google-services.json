@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "162120638501",
+    "project_id": "dangtimerefactoring",
+    "storage_bucket": "dangtimerefactoring.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162120638501:android:10b27e33522f5f3b445fcc",
+        "android_client_info": {
+          "package_name": "com.example.dangtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162120638501-253hmal0gq2qtv8gc70a7g3gqciim7fj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcU2NHEh6T269IGhGWUc5UJKcsjkqJfO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162120638501-253hmal0gq2qtv8gc70a7g3gqciim7fj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
