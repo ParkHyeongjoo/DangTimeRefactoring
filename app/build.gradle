@@ -4,6 +4,9 @@ plugins {
 
     // firebase
     id 'com.google.gms.google-services'
+
+    // google map api
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
