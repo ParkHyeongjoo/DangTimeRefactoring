@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.dangtime.R
+import com.example.dangtime.splash.LoginSplashActivity
+import com.example.dangtime.util.FBAuth
 import com.example.dangtime.util.LocationPermissionActivity
 import com.google.android.material.textfield.TextInputEditText
 
@@ -38,10 +41,29 @@ class LoginActivity : AppCompatActivity() {
         val etLoginPw = findViewById<TextInputEditText>(R.id.etLoginPw)
         val btnLoginLogin = findViewById<Button>(R.id.btnLoginLogin)
         btnLoginLogin.setOnClickListener {
-            val email = etLoginEmail.text.toString()
-            val pw = etLoginPw.text.toString()
+            val email = etLoginEmail.text.toString().trim()
+            val pw = etLoginPw.text.toString().trim()
+            if (email == "") {
+                Toast.makeText(this@LoginActivity, "email을 입력해 주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                if (pw == "") {
+                    Toast.makeText(this@LoginActivity, "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show()
+                } else {
+                    FBAuth.authInit().signInWithEmailAndPassword(email, pw)
+                        .addOnCompleteListener(this@LoginActivity) { task ->
+                            if (task.isSuccessful) {
+                                val intent = Intent(this@LoginActivity, LoginSplashActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    "이메일, 비밀번호를 확인해주세요",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                }
+            }
         }
-
-
     }
 }

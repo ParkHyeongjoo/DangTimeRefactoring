@@ -11,9 +11,9 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imgLocationBack2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/imgMapBack"
+            android:layout_width="66dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -72,9 +72,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/imgLocationBack2"
-            app:layout_constraintStart_toEndOf="@+id/imgLocationBack2"
-            app:layout_constraintTop_toTopOf="@+id/imgLocationBack2" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgMapBack"
+            app:layout_constraintStart_toEndOf="@+id/imgMapBack"
+            app:layout_constraintTop_toTopOf="@+id/imgMapBack" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.dangtime.R
 import com.example.dangtime.auth.Signup3Activity
@@ -25,6 +26,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        val imgMapBack = findViewById<ImageView>(R.id.imgMapBack)
+        imgMapBack.setOnClickListener {
+            finish()
+        }
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this@MapActivity)
@@ -33,7 +38,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val tvMapLocation = findViewById<TextView>(R.id.tvMapLocation)
 
         address = intent.getStringExtra("address").toString()
-        tvMapLocation.setText(address)
+        tvMapLocation.text = address
         Log.d("address", address)
 
         btnAutoLocation.setOnClickListener {

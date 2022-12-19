@@ -112,7 +112,7 @@
             android:id="@+id/etSignupDogNick"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="반려견을 한 단어로 표현한다면?"
+            android:hint="반려견을 한 단어로 표현한다면? (귀여운)"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

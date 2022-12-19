@@ -89,7 +89,7 @@
         android:id="@+id/textInputLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/tvEmailCheck">
@@ -107,7 +107,7 @@
         android:id="@+id/textInputLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
         app:layout_constraintTop_toBottomOf="@+id/tvPwCheck">
@@ -127,6 +127,7 @@
         android:layout_height="wrap_content"
         android:text="올바른 이메일 형식을 입력해주세요"
         android:textColor="#FF0000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
@@ -135,18 +136,20 @@
         android:id="@+id/tvPwCheck"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="8자리 이상 입력해 주세요"
+        android:text="하나이상의 문자, 숫자, 특수문자와 8자리 이상 입력해 주세요"
         android:textColor="#ff0000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     <TextView
-        android:id="@+id/tvPwCheckRe"
+        android:id="@+id/tvPwReCheck"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="비밀번호가 일치하지 않습니다"
         android:textColor="#ff0000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
