@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tabPost1"
+        android:title="모두 보기" />
+    <item
+        android:id="@+id/tabPost2"
+        android:title="산책이야기" />
+    <item
+        android:id="@+id/tabPost3"
+        android:title="댕댕이들" />
+</menu>

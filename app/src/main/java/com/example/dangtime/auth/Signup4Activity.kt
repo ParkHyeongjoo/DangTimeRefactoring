@@ -17,7 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.dangtime.R
-import com.example.dangtime.model.FriendVO
+import com.example.dangtime.model.UserVO
 import com.example.dangtime.util.FBAuth
 import com.example.dangtime.util.FBDatabase
 import com.google.android.material.textfield.TextInputEditText
@@ -138,7 +138,7 @@ class Signup4Activity : AppCompatActivity() {
                                                 .child("$uid/photo").downloadUrl
                                                 .addOnSuccessListener {
                                                     userProfile = it
-                                                    val friend = FriendVO(
+                                                    val friend = UserVO(
                                                         email,
                                                         name,
                                                         address,

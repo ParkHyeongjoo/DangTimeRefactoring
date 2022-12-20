@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tabHome1"
+        android:icon="@drawable/bookmark_full"
+        android:title="찜" />
+    <item
+        android:id="@+id/tabHome2"
+        android:icon="@drawable/home"
+        android:title="홈" />
+    <item
+        android:id="@+id/tabHome3"
+        android:icon="@drawable/wall_clock"
+        android:title="내가 쓴 글" />
+</menu>
