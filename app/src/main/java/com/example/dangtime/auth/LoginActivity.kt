@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -35,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, LocationPermissionActivity::class.java)
             startActivity(intent)
         }
+
+        val cbEmail = findViewById<CheckBox>(R.id.cbEmail)
+        val cbAuto = findViewById<CheckBox>(R.id.cbAuto)
 
         // Login 이후 post로 이동
         val etLoginEmail = findViewById<TextInputEditText>(R.id.etLoginEmail)

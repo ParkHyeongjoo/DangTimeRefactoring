@@ -56,6 +56,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -116,5 +117,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img" />
+
+    <CheckBox
+        android:id="@+id/cbEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="이메일저장"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+    <CheckBox
+        android:id="@+id/cbAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="자동로그인"
+        app:layout_constraintBottom_toBottomOf="@+id/cbEmail"
+        app:layout_constraintStart_toEndOf="@+id/cbEmail"
+        app:layout_constraintTop_toTopOf="@+id/cbEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
