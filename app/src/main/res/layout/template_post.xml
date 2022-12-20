@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imgPostPic"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/loading" />
@@ -41,63 +42,104 @@
         android:id="@+id/tvPostContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPostUploadImg" />
+        app:layout_constraintEnd_toEndOf="@+id/imgPostBookmark"
+        app:layout_constraintStart_toStartOf="@+id/tvPostLike"
+        app:layout_constraintTop_toBottomOf="@+id/tvPostLike" />
 
     <ImageView
         android:id="@+id/imgPostLike"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostContent"
-        app:srcCompat="@drawable/emptyheart" />
-
-    <TextView
-        android:id="@+id/tvPostLikeNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPostLike"
-        app:layout_constraintStart_toEndOf="@+id/imgPostLike"
-        app:layout_constraintTop_toTopOf="@+id/imgPostLike" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPostUploadImg"
+        app:srcCompat="@drawable/heart_empty" />
 
     <ImageView
         android:id="@+id/imgPostReply"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvPostLikeNum"
-        app:layout_constraintStart_toEndOf="@+id/tvPostLikeNum"
-        app:layout_constraintTop_toTopOf="@+id/tvPostLikeNum"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPostLike"
+        app:layout_constraintStart_toEndOf="@+id/imgPostLike"
+        app:layout_constraintTop_toTopOf="@+id/imgPostLike"
         app:srcCompat="@drawable/reply" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPostReply"
-        app:layout_constraintStart_toEndOf="@+id/imgPostReply"
-        app:layout_constraintTop_toTopOf="@+id/imgPostReply" />
-
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imgPostBookmark"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/textView17"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPostReply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgPostReply"
         app:srcCompat="@drawable/bookmark_empty" />
+
+    <TextView
+        android:id="@+id/tvPostAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="신가동"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvPostReply"
+        app:layout_constraintTop_toBottomOf="@+id/tvPostReply" />
+
+    <TextView
+        android:id="@+id/tvPostTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="방금전"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPostAddress"
+        app:layout_constraintStart_toEndOf="@+id/tvPostAddress"
+        app:layout_constraintTop_toTopOf="@+id/tvPostAddress" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPostReply"
+        app:layout_constraintStart_toEndOf="@+id/imgPostReply"
+        app:layout_constraintTop_toTopOf="@+id/imgPostReply"
+        app:srcCompat="@drawable/share" />
+
+    <TextView
+        android:id="@+id/tvPostLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="좋아요 1428개"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/imgPostLike"
+        app:layout_constraintTop_toBottomOf="@+id/imgPostLike" />
+
+    <TextView
+        android:id="@+id/tvPostReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="댓글 777개 모두 보기"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvPostContent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPostContent" />
+
+    <ImageView
+        android:id="@+id/imgPostMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPostName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvPostName"
+        app:srcCompat="@drawable/more_vert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

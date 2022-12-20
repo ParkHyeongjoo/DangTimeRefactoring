@@ -12,6 +12,7 @@ import com.example.dangtime.util.FBDatabase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlin.random.Random
 
 class LoginSplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +20,10 @@ class LoginSplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_splash)
 
         val uid = FBAuth.getUid()
-        val userRef = FBDatabase.getUser()
         val tvSplashName = findViewById<TextView>(R.id.tvSplashName)
+        val tvLoginTip = findViewById<TextView>(R.id.tvLoginTip)
+        val tipList = ArrayList<String>()
+        val rd = Random
 
         val postListener = object  : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -32,7 +35,7 @@ class LoginSplashActivity : AppCompatActivity() {
 
             }
         }
-        userRef.addValueEventListener(postListener)
+        FBDatabase.getUser().addValueEventListener(postListener)
 
         Handler().postDelayed({
             val intent = Intent(this@LoginSplashActivity,

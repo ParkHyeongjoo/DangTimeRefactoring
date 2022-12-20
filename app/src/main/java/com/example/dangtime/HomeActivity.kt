@@ -1,22 +1,17 @@
 package com.example.dangtime
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.example.dangtime.R
 import com.example.dangtime.home.post.bookmark.BookmarkFragment
 import com.example.dangtime.home.post.home.HomeFragment
 import com.example.dangtime.home.post.mypost.MypostFragment
+import com.example.dangtime.home.write.Write1Activity
 import com.example.dangtime.util.FBAuth
-import com.example.dangtime.util.FBDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
@@ -76,6 +71,12 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+
+        val imgWrite = findViewById<ImageView>(R.id.imgWrite)
+        imgWrite.setOnClickListener {
+            val intent = Intent(this@HomeActivity, Write1Activity::class.java)
+            startActivity(intent)
         }
 
         val imgHomeChat = findViewById<ImageView>(R.id.imgHomeChat)
