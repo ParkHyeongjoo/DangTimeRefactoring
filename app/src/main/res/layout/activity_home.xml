@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeActivity">
+    tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14"
-        app:menu="@menu/home_list" />
+        app:menu="@menu/list_home" />
 
     <FrameLayout
         android:id="@+id/flHome"

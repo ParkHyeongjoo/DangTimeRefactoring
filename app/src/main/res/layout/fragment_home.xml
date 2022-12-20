@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/post_list" />
+        app:menu="@menu/list_post" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"

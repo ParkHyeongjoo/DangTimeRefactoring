@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import com.example.dangtime.R
-import com.example.dangtime.home.HomeActivity
+import com.example.dangtime.HomeActivity
 import com.example.dangtime.util.FBAuth
 import com.example.dangtime.util.FBDatabase
 import com.google.firebase.database.DataSnapshot

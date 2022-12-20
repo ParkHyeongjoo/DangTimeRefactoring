@@ -1,4 +1,4 @@
-package com.example.dangtime.home
+package com.example.dangtime
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
