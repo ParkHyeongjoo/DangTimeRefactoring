@@ -12,13 +12,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.dangtime.HomeActivity
 import com.example.dangtime.R
+import com.example.dangtime.model.PostVO
+import com.example.dangtime.model.UserVO
 import com.example.dangtime.util.FBAuth
 import com.example.dangtime.util.FBDatabase
+import com.example.dangtime.util.Time
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 
 class Write2Activity : AppCompatActivity() {
@@ -51,7 +56,7 @@ class Write2Activity : AppCompatActivity() {
         if (category == "mate") {
             val postListener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val name = snapshot.child("$uid").child("name").value.toString()
+                    val name = snapshot.child(uid).child("name").value.toString()
                     tvWriteTitle.text = "${name}에게\n산책 메이트를 선물해주세요"
                 }
 
@@ -59,7 +64,7 @@ class Write2Activity : AppCompatActivity() {
 
                 }
             }
-            FBDatabase.getUser().addValueEventListener(postListener)
+            FBDatabase.getUserRef().addValueEventListener(postListener)
         } else {
             tvWriteTitle.text = "댕댕이들이랑\n복작복작 수다떨기!"
         }
@@ -76,13 +81,38 @@ class Write2Activity : AppCompatActivity() {
         val btnWrite = findViewById<Button>(R.id.btnWrite)
         btnWrite.setOnClickListener {
             val content = etWriteContent.text.toString()
-            if (imageUri == null){
+            if (imageUri == null) {
                 Toast.makeText(this@Write2Activity, "사진을 등록해 주세요", Toast.LENGTH_SHORT).show()
-            }else{
-                if(content == ""){
+            } else {
+                if (content == "") {
                     Toast.makeText(this@Write2Activity, "게시글을 작성해 주세요", Toast.LENGTH_SHORT).show()
-                }else{
+                } else {
+                    val intent = Intent(this@Write2Activity, HomeActivity::class.java)
+                    val postUid = FBDatabase.getPostRef().child(uid).push().key.toString()
+                    val time = Time.getTime()
 
+                    FirebaseStorage.getInstance().reference.child("postImages")
+                        .child("$postUid/photo").putFile(imageUri!!)
+                        .addOnCompleteListener {
+                            var postImageUrl: Uri? = null
+                            FirebaseStorage.getInstance().reference.child("postImages")
+                                .child("$postUid/photo").downloadUrl
+                                .addOnSuccessListener {
+                                    postImageUrl = it
+                                    val post = PostVO(
+                                        content,
+                                        time,
+                                        postImageUrl.toString(),
+                                        category,
+                                        postUid,
+                                        uid
+                                    )
+                                    FBDatabase.getPostRef().child(postUid).child("write").setValue(post)
+                                }
+                            Toast.makeText(this@Write2Activity, "게시글 등록이 되었습니다", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                            finish()
+                        }
                 }
             }
         }

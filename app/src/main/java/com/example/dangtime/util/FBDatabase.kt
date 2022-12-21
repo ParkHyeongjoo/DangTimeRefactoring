@@ -8,8 +8,12 @@ class FBDatabase {
     companion object {
         val database = Firebase.database
 
-        fun getUser(): DatabaseReference {
+        fun getUserRef(): DatabaseReference {
             return database.getReference("user")
+        }
+
+        fun getPostRef(): DatabaseReference{
+            return database.getReference("post")
         }
     }
 }

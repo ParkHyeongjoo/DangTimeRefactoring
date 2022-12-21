@@ -35,7 +35,7 @@ class LoginSplashActivity : AppCompatActivity() {
 
             }
         }
-        FBDatabase.getUser().addValueEventListener(postListener)
+        FBDatabase.getUserRef().addValueEventListener(postListener)
 
         Handler().postDelayed({
             val intent = Intent(this@LoginSplashActivity,

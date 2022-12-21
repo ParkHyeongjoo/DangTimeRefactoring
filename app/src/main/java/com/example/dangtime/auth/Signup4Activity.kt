@@ -145,7 +145,7 @@ class Signup4Activity : AppCompatActivity() {
                                                         userProfile.toString(),
                                                         uid
                                                     )
-                                                    FBDatabase.getUser().child(uid).setValue(friend)
+                                                    FBDatabase.getUserRef().child(uid).setValue(friend)
                                                 }
                                         }
                                     Toast.makeText(this@Signup4Activity, "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show()

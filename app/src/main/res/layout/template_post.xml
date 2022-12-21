@@ -30,8 +30,8 @@
 
     <ImageView
         android:id="@+id/imgPostUploadImg"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +77,8 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgPostReply"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imgPostShare"
         app:layout_constraintTop_toTopOf="@+id/imgPostReply"
         app:srcCompat="@drawable/bookmark_empty" />
 
@@ -102,7 +104,7 @@
         app:layout_constraintTop_toTopOf="@+id/tvPostAddress" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgPostShare"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
@@ -139,7 +141,16 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvPostName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvPostName"
         app:layout_constraintTop_toTopOf="@+id/tvPostName"
         app:srcCompat="@drawable/more_vert" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-206dp"
+        tools:layout_editor_absoluteY="106dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
