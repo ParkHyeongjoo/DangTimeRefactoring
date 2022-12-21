@@ -69,5 +69,6 @@ class Home1AllFragment : Fragment() {
             }
         }
         FBDatabase.getPostRef().addValueEventListener(postListener)
+
     }
 }

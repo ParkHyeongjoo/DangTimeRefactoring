@@ -151,6 +151,7 @@ class PostAdapter(val context: Context, val postList: ArrayList<PostVO>) :
             if (!holder.likeCheck) {
                 FBDatabase.getPostRef().child(postUid.toString()).child("like").child(uid)
                     .setValue(uid)
+                holder.likeCheck = true
             } else {
                 FBDatabase.getPostRef().child(postUid.toString()).child("like").child(uid)
                     .removeValue()

@@ -3,4 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.post.home.Home2MateFragment" />
+    tools:context=".home.post.home.Home2MateFragment" >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPostHomeMate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

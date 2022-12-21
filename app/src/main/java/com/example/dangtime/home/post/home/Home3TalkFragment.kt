@@ -1,60 +1,73 @@
 package com.example.dangtime.home.post.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dangtime.R
+import com.example.dangtime.adapter.PostAdapter
+import com.example.dangtime.model.PostVO
+import com.example.dangtime.util.FBDatabase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Home3TalkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Home3TalkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // item
+    var postList = ArrayList<PostVO>()
+    lateinit var adapter: PostAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home3_talk, container, false)
+        val view = inflater.inflate(R.layout.fragment_home3_talk, container, false)
+
+        // container
+        val rvPostHomeTalk = view.findViewById<RecyclerView>(R.id.rvPostHomeTalk)
+
+        // template
+        // template_post
+
+        getPost()
+
+        // adapter
+        adapter = PostAdapter(
+            requireContext(),
+            postList
+        )
+
+        // adapter container 연결
+        rvPostHomeTalk.adapter = adapter
+        rvPostHomeTalk.layoutManager = LinearLayoutManager(requireContext())
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Home3TalkFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Home3TalkFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    fun getPost() {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                postList.clear()
+                for (model in snapshot.children) {
+                    val postData = model.child("write").getValue(PostVO::class.java)
+                    if (postData != null) {
+                        if (postData.category == "talk") postList.add(postData)
+                    }
                 }
+                postList.reverse()
+                adapter.notifyDataSetChanged()
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        FBDatabase.getPostRef().addValueEventListener(postListener)
     }
+
 }
