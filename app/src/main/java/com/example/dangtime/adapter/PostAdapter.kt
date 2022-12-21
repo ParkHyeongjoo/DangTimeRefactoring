@@ -32,10 +32,12 @@ class PostAdapter(val context: Context, val postList: ArrayList<PostVO>) :
         val imgPostLike: ImageView
         var likeCheck: Boolean
         val tvPostLike: TextView
+        val imgPostBookmark: ImageView
+        var bookmarkCheck: Boolean
 
         val imgPostReply: ImageView
         val tvPostReply: TextView
-        val imgPostBookmark: ImageView
+
         val imgPostShare: ImageView
         val imgPostMore: ImageView
 
@@ -49,10 +51,12 @@ class PostAdapter(val context: Context, val postList: ArrayList<PostVO>) :
             imgPostLike = itemView.findViewById(R.id.imgPostLike)
             likeCheck = false
             tvPostLike = itemView.findViewById(R.id.tvPostLike)
+            imgPostBookmark = itemView.findViewById(R.id.imgPostBookmark)
+            bookmarkCheck = false
 
             imgPostReply = itemView.findViewById(R.id.imgPostReply)
             tvPostReply = itemView.findViewById(R.id.tvPostReply)
-            imgPostBookmark = itemView.findViewById(R.id.imgPostBookmark)
+
             imgPostShare = itemView.findViewById(R.id.imgPostShare)
             imgPostMore = itemView.findViewById(R.id.imgPostMore)
         }
@@ -193,9 +197,47 @@ class PostAdapter(val context: Context, val postList: ArrayList<PostVO>) :
         FBDatabase.getPostRef().child(postUid.toString()).child("like")
             .addValueEventListener(likeListener)
 
-        // 댓글
+        // 북마크
+        val bookmarkList = ArrayList<String>()
+        holder.imgPostBookmark.setOnClickListener {
+            if (!holder.bookmarkCheck) {
+                FBDatabase.getPostRef().child(postUid.toString()).child("bookmark").child(uid)
+                    .setValue(uid)
+                holder.bookmarkCheck = true
+            } else {
+                FBDatabase.getPostRef().child(postUid.toString()).child("bookmark").child(uid)
+                    .removeValue()
+                holder.bookmarkCheck = false
+            }
+        }
+        val bookmarkListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                bookmarkList.clear()
+                for (model in snapshot.children) {
+                    val bookmarkData = model.value.toString()
+                    bookmarkList.add(bookmarkData)
+                }
+                for (i in 0 until bookmarkList.size) {
+                    if (bookmarkList[i] == uid) {
+                        holder.bookmarkCheck = true
+                        break;
+                    } else {
+                        holder.bookmarkCheck = false
+                    }
+                }
+                if (holder.bookmarkCheck) {
+                    holder.imgPostBookmark.setImageResource(R.drawable.bookmark_full)
+                } else {
+                    holder.imgPostBookmark.setImageResource(R.drawable.bookmark_empty)
+                }
+            }
 
-
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        FBDatabase.getPostRef().child(postUid.toString()).child("bookmark")
+            .addValueEventListener(bookmarkListener)
     }
 
     override fun getItemCount(): Int {

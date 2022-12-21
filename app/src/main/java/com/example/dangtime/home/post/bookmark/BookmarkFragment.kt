@@ -6,55 +6,52 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.dangtime.R
+import com.example.dangtime.home.post.home.Home1AllFragment
+import com.example.dangtime.home.post.home.Home2MateFragment
+import com.example.dangtime.home.post.home.Home3TalkFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BookmarkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookmarkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmark, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_bookmark, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BookmarkFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BookmarkFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val bnvPostBookmark = view.findViewById<BottomNavigationView>(R.id.bnvPostBookmark)
+
+        childFragmentManager.beginTransaction().replace(
+            R.id.flPostBookmark,
+            Bookmark1AllFragment()
+        ).commit()
+
+        bnvPostBookmark.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.tabPost1 -> {
+                    childFragmentManager.beginTransaction().replace(
+                        R.id.flPostBookmark,
+                        Bookmark1AllFragment()
+                    ).commit()
+                }
+                R.id.tabPost2 -> {
+                    childFragmentManager.beginTransaction().replace(
+                        R.id.flPostBookmark,
+                        Bookmark2MateFragment()
+                    ).commit()
+                }
+                R.id.tabPost3 -> {
+                    childFragmentManager.beginTransaction().replace(
+                        R.id.flPostBookmark,
+                        BookMark3TalkFragment()
+                    ).commit()
                 }
             }
+            true
+        }
+
+        return view
     }
+
 }
